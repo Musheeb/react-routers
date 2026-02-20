@@ -1,0 +1,10 @@
+.users__and__user__details--container {
+  display: flex;
+  gap: 30px;
+}
+
+.users__list--container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

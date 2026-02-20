@@ -9,6 +9,8 @@ import Contact from "./components/Contact/Contact.jsx";
 import Help from "./components/Help/Help.jsx";
 import Profiles from "./components/Profiles/Profiles.jsx";
 import Profile from "./components/Profile/Profile.jsx";
+import Users from "./components/Users/Users.jsx";
+import UserDetails from "./components/UserDetails/UserDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
     element: <Profiles />,
     children: [
       {
-        path: "/profiles/:id",
+        path: "/profiles/:profileId",
         element: <Profile />,
       },
     ],
@@ -41,6 +43,16 @@ const router = createBrowserRouter([
   {
     path: "/help",
     element: <Help />,
+  },
+  {
+    path: "/users",
+    element: <Users />,
+    children: [
+      {
+        path: "/users/:userId",
+        element: <UserDetails />,
+      },
+    ],
   },
 ]);
 
