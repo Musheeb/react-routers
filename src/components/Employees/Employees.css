@@ -1,0 +1,24 @@
+.employees__list__header--container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.employees__list--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.employees__list__details--container {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.employees__list__only--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

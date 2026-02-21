@@ -1,0 +1,13 @@
+.employee__details--container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.employee__details__data--container {
+  border: 5px solid black;
+  padding: 10px;
+  border-radius: 20px;
+  background: linear-gradient(to right, #757f9a, #d7dde8);
+  color: azure;
+}
