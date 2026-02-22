@@ -14,6 +14,9 @@ import Users from "./components/Users/Users.jsx";
 import UserDetails from "./components/UserDetails/UserDetails.jsx";
 import Employees from "./components/Employees/Employees.jsx";
 import EmployeeDetails from "./components/EmployeeDetails/EmployeeDetails.jsx";
+import Login from "./components/Login/Login.jsx";
+import Confidential from "./components/Confidential/Confidential.jsx";
+import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,27 +61,42 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/employees",
-    element: <Employees />,
-    loader: async () => {
-      const users = await fetch("https://jsonplaceholder.typicode.com/users");
-      // return JSON.parse(users);
-      return users.json();
-    },
-    errorElement: <div>Something went wrong 😔</div>,
+    element: <ProtectedRoutes />,
     children: [
       {
-        path: "/employees/:id",
-        element: <EmployeeDetails />,
-        loader: async ({ params, request }) => {
-          // console.log(request);
-          const user = await fetch(
-            `https://jsonplaceholder.typicode.com/users/${params.id}`,
+        path: "/employees",
+        element: <Employees />,
+        loader: async () => {
+          const users = await fetch(
+            "https://jsonplaceholder.typicode.com/users",
           );
-          return user.json();
+          // return JSON.parse(users);
+          return users.json();
         },
+        errorElement: <div>Something went wrong 😔</div>,
+        children: [
+          {
+            path: "/employees/:id",
+            element: <EmployeeDetails />,
+            loader: async ({ params, request }) => {
+              // console.log(request);
+              const user = await fetch(
+                `https://jsonplaceholder.typicode.com/users/${params.id}`,
+              );
+              return user.json();
+            },
+          },
+        ],
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    element: <ProtectedRoutes />,
+    children: [{ path: "/confidential", element: <Confidential /> }],
   },
 ]);
 
